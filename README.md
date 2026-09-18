@@ -85,16 +85,36 @@ Create an A record for the hostname pointing to your VPS. Do not expose port 409
 
 ## AI / LLM Guides
 
-This repository also documents practical ways to connect OpenCode and other coding agents to free or low-cost hosted models, local Ollama models, OpenRouter, OmniRoute, compatible 9router-style proxies, and Google Antigravity.
+This repository documents practical ways to connect OpenCode and other coding agents to free or low-cost hosted models, local Ollama models, OpenRouter, OmniRoute, compatible 9router-style proxies, and Google Antigravity.
 
 - [Free and local LLMs](docs/llm-free-and-local.md)
 - [OpenRouter](docs/openrouter.md)
 - [OmniRoute](docs/omniroute.md)
 - [9router / proxy](docs/9router.md)
 - [Google Antigravity](docs/google-antigravity.md)
+- [Ollama](docs/ai/ollama.md)
+- [OpenCode providers](docs/ai/providers.md)
 - [MULTEXPK VPS for AI development](docs/multexpk-vps.md)
+- [MULTEXPK reference architecture](docs/multexpk/reference-architecture.md)
 
 Free model availability, quotas and provider policies change. Verify current upstream documentation before production use.
+
+## Reference Architecture
+
+The expanded documentation includes a sanitized architecture for a VPS running OpenCode, an AI gateway and local model runtime behind Nginx and HTTPS.
+
+- [Reference architecture](docs/reference-architecture.md)
+- [VPS security hardening](docs/security/hardening.md)
+- [Secrets management](docs/security/secrets.md)
+- [Firewall and network exposure](docs/security/firewall.md)
+- [Backup and recovery](docs/security/backup-and-recovery.md)
+
+## Automation
+
+OpenCode can be used as a programmable development service and can connect external tools through MCP.
+
+- [OpenCode SDK](docs/automation/sdk.md)
+- [MCP](docs/automation/mcp.md)
 
 ## Production projects
 
