@@ -83,6 +83,19 @@ systemctl reload nginx
 
 Create an A record for the hostname pointing to your VPS. Do not expose port 4096 publicly. OpenCode should remain bound to 127.0.0.1 and Nginx should be the public entry point.
 
+## AI / LLM Guides
+
+This repository also documents practical ways to connect OpenCode and other coding agents to free or low-cost hosted models, local Ollama models, OpenRouter, OmniRoute, compatible 9router-style proxies, and Google Antigravity.
+
+- [Free and local LLMs](docs/llm-free-and-local.md)
+- [OpenRouter](docs/openrouter.md)
+- [OmniRoute](docs/omniroute.md)
+- [9router / proxy](docs/9router.md)
+- [Google Antigravity](docs/google-antigravity.md)
+- [MULTEXPK VPS for AI development](docs/multexpk-vps.md)
+
+Free model availability, quotas and provider policies change. Verify current upstream documentation before production use.
+
 ## Production projects
 
 Before an agent modifies a production project: inspect git status, read project instructions, back up important data, review the intended scope, test safely, review the diff, and deploy explicitly. Keep credentials outside the repository.
@@ -102,6 +115,25 @@ See [docs/production-projects.md](docs/production-projects.md).
 ## Upstream
 
 Follow the official OpenCode documentation for current application behavior: https://opencode.ai/docs
+
+---
+
+## MULTEXPK LTD ®™ — VPS & AI Infrastructure
+
+**Secure Cloud • VPS • Hosting • Automation**
+
+Use a properly isolated VPS for persistent OpenCode sessions, AI gateways, private Ollama endpoints and development automation. MULTEXPK can provide VPS infrastructure, configuration and technical support for AI development workloads.
+
+**Websites:**  
+- https://multexpk.com — MULTEXPK LTD
+- https://multex.pk — Multex.PK Software House
+
+**Phone:** +44 7480 676374  
+**WhatsApp:** +92 312 6565434
+
+**Email:** support@multexpk.com
+
+> For secure AI development, keep private services private, expose only the required HTTPS endpoint, use strong authentication, and never put API keys or server credentials in Git.
 
 ## License
 
