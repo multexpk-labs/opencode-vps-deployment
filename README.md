@@ -3,11 +3,22 @@
 **MULTEXPK LTD ®™**  
 Secure Cloud • VPS • Hosting • Automation
 
-A generic production deployment pattern for running OpenCode Web remotely on a VPS with systemd, Nginx, HTTPS, and Cloudflare.
+A generic, production-oriented knowledge base for running OpenCode Web on Linux VPS infrastructure with systemd, Nginx, HTTPS, Cloudflare, Docker, AI gateways, and local LLM runtimes.
 
-> This repository is an independent deployment/infrastructure project. It is not a fork of OpenCode.
+> This repository is an independent deployment and infrastructure project. It is not a fork of OpenCode.
 
-## Architecture
+## What this repository is for
+
+This project has four goals:
+
+- **Education** — practical guides for developers learning Linux, VPS, Docker, reverse proxies, AI infrastructure, and coding agents.
+- **Research** — documented experiments around LLMs, inference, model evaluation, gateways, local runtimes, and AI agents.
+- **Community** — reusable deployment patterns, troubleshooting knowledge, research notes, and contribution opportunities.
+- **Infrastructure** — reference architectures for hosting persistent AI development environments on VPS/cloud infrastructure.
+
+The documentation is designed to be useful independently of MULTEXPK services. Service information is kept in a separate section so technical guidance remains reusable.
+
+## Quick architecture
 
 ```text
 Internet
@@ -59,6 +70,8 @@ Protect it:
 chmod 600 /etc/opencode/server.env
 ```
 
+Never commit real credentials.
+
 ## systemd
 
 Copy `config/opencode.service.example`, replace `YOUR_PROJECT_PATH`, and install it as `/etc/systemd/system/opencode.service`.
@@ -79,13 +92,37 @@ nginx -t
 systemctl reload nginx
 ```
 
+The application should normally remain bound to localhost while Nginx is the public entry point.
+
 ## Cloudflare
 
-Create an A record for the hostname pointing to your VPS. Do not expose port 4096 publicly. OpenCode should remain bound to 127.0.0.1 and Nginx should be the public entry point.
+Create an A record for the hostname pointing to your VPS. Do not expose port 4096 publicly. OpenCode should remain bound to `127.0.0.1` and Nginx should be the public entry point.
 
-## AI / LLM Guides
+See the [Cloudflare guide](docs/guides/cloudflare.md).
 
-This repository documents practical ways to connect OpenCode and other coding agents to free or low-cost hosted models, local Ollama models, OpenRouter, OmniRoute, compatible 9router-style proxies, and Google Antigravity.
+# Learn
+
+## VPS and Linux
+
+- [Linux VPS baseline](docs/guides/linux-vps.md)
+- [Docker](docs/guides/docker.md)
+- [Nginx reverse proxy](docs/guides/nginx-reverse-proxy.md)
+- [Cloudflare](docs/guides/cloudflare.md)
+- [Monitoring](docs/guides/monitoring.md)
+- [Performance tuning](docs/guides/performance-tuning.md)
+
+## OpenCode deployment
+
+- [Architecture](docs/architecture.md)
+- [Installation](docs/installation.md)
+- [systemd](docs/systemd.md)
+- [Nginx](docs/nginx.md)
+- [Troubleshooting](docs/troubleshooting.md)
+- [Production projects](docs/production-projects.md)
+
+## AI / LLM
+
+This repository documents practical ways to connect OpenCode and other coding agents to local runtimes, hosted models, gateways, and compatible APIs.
 
 - [Free and local LLMs](docs/llm-free-and-local.md)
 - [OpenRouter](docs/openrouter.md)
@@ -94,16 +131,30 @@ This repository documents practical ways to connect OpenCode and other coding ag
 - [Google Antigravity](docs/google-antigravity.md)
 - [Ollama](docs/ai/ollama.md)
 - [OpenCode providers](docs/ai/providers.md)
-- [MULTEXPK VPS for AI development](docs/multexpk-vps.md)
-- [MULTEXPK reference architecture](docs/multexpk/reference-architecture.md)
+- [OpenAI-compatible APIs](docs/providers/compatible-apis.md)
+- [Gateway and runtime roles](docs/providers/gateway-comparison.md)
 
-Free model availability, quotas and provider policies change. Verify current upstream documentation before production use.
+Free model availability, quotas, provider policies, and model catalogs change. Verify current upstream documentation before production use.
 
-## Reference Architecture
+## AI / LLM research
 
-The expanded documentation includes a sanitized architecture for a VPS running OpenCode, an AI gateway and local model runtime behind Nginx and HTTPS.
+The research section focuses on reproducible infrastructure experiments rather than one-off claims.
+
+- [AI & LLM research](docs/research/ai-llm-research.md)
+- [Local vs cloud LLMs](docs/research/local-vs-cloud-llm.md)
+- [Model evaluation](docs/research/model-evaluation.md)
+- [Inference costs](docs/research/inference-costs.md)
+- [AI agent architecture](docs/research/ai-agent-architecture.md)
+- [Glossary](docs/glossary.md)
+
+When publishing research results, record the model, version, runtime, hardware, configuration, date, workload, measurements, and limitations.
+
+# Reference Architecture
+
+The expanded documentation includes a sanitized architecture for a VPS running OpenCode, an AI gateway, and a local model runtime behind Nginx and HTTPS.
 
 - [Reference architecture](docs/reference-architecture.md)
+- [MULTEXPK reference architecture](docs/multexpk/reference-architecture.md)
 - [VPS security hardening](docs/security/hardening.md)
 - [Secrets management](docs/security/secrets.md)
 - [Firewall and network exposure](docs/security/firewall.md)
@@ -116,44 +167,73 @@ OpenCode can be used as a programmable development service and can connect exter
 - [OpenCode SDK](docs/automation/sdk.md)
 - [MCP](docs/automation/mcp.md)
 
-## Production projects
+## FAQ
 
-Before an agent modifies a production project: inspect git status, read project instructions, back up important data, review the intended scope, test safely, review the diff, and deploy explicitly. Keep credentials outside the repository.
+See the [FAQ](docs/faq.md) for common questions about OpenCode, AI gateways, local models, VPS deployment, and production use.
 
-See [docs/production-projects.md](docs/production-projects.md).
+## Community
 
-## Documentation
+Contributions are welcome when they improve technical accuracy, reproducibility, security, or educational value.
 
-- [Architecture](docs/architecture.md)
-- [Installation](docs/installation.md)
-- [systemd](docs/systemd.md)
-- [Nginx](docs/nginx.md)
-- [Cloudflare](docs/cloudflare.md)
-- [Production projects](docs/production-projects.md)
-- [Troubleshooting](docs/troubleshooting.md)
+- [Contributing](CONTRIBUTING.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Security policy](SECURITY.md)
+- [Roadmap](docs/roadmap.md)
+
+Please report outdated provider information, incorrect commands, deployment issues, and useful research findings through GitHub Issues or pull requests.
+
+## Connect with the AI infrastructure community
+
+This repository is intended to be a shared learning space for developers working with:
+
+- AI coding agents
+- LLMs and inference
+- Ollama and local models
+- OpenAI-compatible APIs
+- MCP
+- Docker
+- Linux VPS infrastructure
+- automation
+- cloud deployment
+
+If you publish a reproducible experiment or deployment pattern, consider contributing it to the repository so others can test and improve it.
+
+---
+
+# MULTEXPK LTD ®™ — AI & Cloud Infrastructure
+
+**Secure Cloud • VPS • Hosting • Automation**
+
+The technical material above is designed to be useful on any compatible infrastructure. If you need infrastructure for the workloads documented here, MULTEXPK provides VPS, cloud, hosting, automation, and deployment services.
+
+Typical workloads include:
+
+- OpenCode and AI coding agents
+- Ollama and self-hosted LLM runtimes
+- AI gateways and API proxies
+- Docker development environments
+- n8n and automation
+- web applications and APIs
+- private development servers
+- AI/LLM research environments
+
+### Explore MULTEXPK
+
+- **Website:** https://multexpk.com
+- **Software & services:** https://multex.pk
+- **Email:** support@multexpk.com
+- **WhatsApp:** +92 312 6565434
+- **International:** +44 7480 676374
+
+For current VPS specifications, locations, pricing, availability, and service terms, use the official MULTEXPK websites or contact the team directly.
+
+See the dedicated [MULTEXPK AI VPS page](docs/multexpk/ai-vps.md) and [service overview](docs/multexpk/cloud-services.md).
+
+> For secure AI development, keep private services private, expose only the required HTTPS endpoint, use strong authentication, back up important data, and never put API keys or server credentials in Git.
 
 ## Upstream
 
 Follow the official OpenCode documentation for current application behavior: https://opencode.ai/docs
-
----
-
-## MULTEXPK LTD ®™ — VPS & AI Infrastructure
-
-**Secure Cloud • VPS • Hosting • Automation**
-
-Use a properly isolated VPS for persistent OpenCode sessions, AI gateways, private Ollama endpoints and development automation. MULTEXPK can provide VPS infrastructure, configuration and technical support for AI development workloads.
-
-**Websites:**  
-- https://multexpk.com — MULTEXPK LTD
-- https://multex.pk — Multex.PK Software House
-
-**Phone:** +44 7480 676374  
-**WhatsApp:** +92 312 6565434
-
-**Email:** support@multexpk.com
-
-> For secure AI development, keep private services private, expose only the required HTTPS endpoint, use strong authentication, and never put API keys or server credentials in Git.
 
 ## License
 
