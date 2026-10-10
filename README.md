@@ -3,7 +3,7 @@
 **MULTEXPK LTD ®™**  
 Secure Cloud • VPS • Hosting • Automation
 
-A generic, production-oriented knowledge base for running OpenCode Web on Linux VPS infrastructure with systemd, Nginx, HTTPS, Cloudflare, Docker, AI gateways, and local LLM runtimes.
+A generic, production-oriented knowledge base for running OpenCode Web on Linux VPS infrastructure with systemd, Nginx or Apache, HTTPS, Cloudflare, Docker, AI gateways, and local LLM runtimes.
 
 > This repository is an independent deployment and infrastructure project. It is not a fork of OpenCode.
 
@@ -92,7 +92,7 @@ nginx -t
 systemctl reload nginx
 ```
 
-The application should normally remain bound to localhost while Nginx is the public entry point.
+The application should normally remain bound to localhost while Nginx or Apache is the public entry point. For cPanel/WHM Apache, see the [Apache on cPanel guide](docs/apache-cpanel.md).
 
 ## Cloudflare
 
