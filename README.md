@@ -96,7 +96,7 @@ The application should normally remain bound to localhost while Nginx or Apache 
 
 ## Cloudflare
 
-Create an A record for the hostname pointing to your VPS. Do not expose port 4096 publicly. OpenCode should remain bound to `127.0.0.1` and Nginx should be the public entry point.
+Create an A record for the hostname pointing to your VPS. Do not expose port 4096 publicly. OpenCode should remain bound to `127.0.0.1`; Nginx or Apache should be the public entry point.
 
 See the [Cloudflare guide](docs/guides/cloudflare.md).
 
