@@ -23,7 +23,7 @@ HOST=agent.example.com
 CPUSER=examplecpuser
 
 dig +short "$HOST"
-ss -tlnp | grep -E ':4096\\b' || echo "Port 4096 is not listening"
+ss -tlnp | grep -E ':4096\b' || echo "Port 4096 is not listening"
 httpd -M 2>/dev/null | grep -E 'proxy_module|proxy_http_module|proxy_wstunnel_module|rewrite_module|ssl_module|headers_module'
 grep -F "$HOST" /etc/userdomains
 ```
@@ -49,7 +49,7 @@ mkdir -p /opt/opencode-agent /etc/opencode
 umask 077
 openssl rand -base64 24 > /tmp/opencode-pw
 cat /tmp/opencode-pw
-printf 'OPENCODE_SERVER_PASSWORD=%s\\n' "$(cat /tmp/opencode-pw)" > /etc/opencode/server.env
+printf 'OPENCODE_SERVER_PASSWORD=%s\n' "$(cat /tmp/opencode-pw)" > /etc/opencode/server.env
 chmod 600 /etc/opencode/server.env
 rm -f /tmp/opencode-pw
 
@@ -75,7 +75,7 @@ systemctl daemon-reload
 systemctl enable --now opencode
 systemctl status opencode --no-pager
 ss -tlnp | grep ':4096'
-curl -sS -o /dev/null -w 'local HTTP: %{http_code}\\n' http://127.0.0.1:4096/
+curl -sS -o /dev/null -w 'local HTTP: %{http_code}\n' http://127.0.0.1:4096/
 ```
 
 Save the generated password securely for the web login. The temporary password file is deleted, but the password remains in `/etc/opencode/server.env`.
@@ -121,7 +121,7 @@ If AutoSSL is configured for the cPanel account:
 Test the endpoint after confirming the certificate has been issued:
 
 ```bash
-curl -sS -o /dev/null -w 'public HTTPS: %{http_code}\\n' "https://$HOST/"
+curl -sS -o /dev/null -w 'public HTTPS: %{http_code}\n' "https://$HOST/"
 journalctl -u opencode -n 50 --no-pager
 ```
 
